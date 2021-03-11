@@ -30,7 +30,8 @@
       },
       "autoload": {
           "psr-4": {
-              "SilverCommerce\\SalePrices\\": "src/"
+              "SilverCommerce\\SalePrices\\": "src/",
+              "SilverCommerce\\SalePrices\\Tests\\": "tests/"
           }
       }
   }
