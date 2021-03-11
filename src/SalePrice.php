@@ -2,14 +2,16 @@
 
 namespace SilverCommerce\SalePrices;
 
-use SilverCommerce\CatalogueAdmin\Model\CatalogueProduct;
-use SilverCommerce\TaxAdmin\Traits\Taxable;
+use SilverStripe\i18n\i18n;
 use SilverStripe\ORM\DataObject;
+use SilverCommerce\TaxAdmin\Traits\Taxable;
+use SilverCommerce\TaxAdmin\Interfaces\TaxableProvider;
+use SilverCommerce\CatalogueAdmin\Model\CatalogueProduct;
 
 /**
  * @method CatalgoueProduct Parent
  */
-class SalePrice extends DataObject
+class SalePrice extends DataObject implements TaxableProvider
 {
     use Taxable;
 
@@ -49,5 +51,10 @@ class SalePrice extends DataObject
     public function getShowTaxString()
     {
         return $this->Parent()->getShowTaxString();
+    }
+
+    public function getLocale()
+    {
+        return i18n::get_locale();
     }
 }
