@@ -2,9 +2,6 @@
 
 namespace SilverCommerce\SalePrices;
 
-use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\GridField\GridField;
-use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\ORM\DataExtension;
 
 class CatalogueProductExtension extends DataExtension
@@ -12,4 +9,18 @@ class CatalogueProductExtension extends DataExtension
     private static $has_many = [
         'SalePrices' => SalePrice::class
     ];
+
+    public function getNiceSalePrice()
+    {
+        /** @var \SilverCommerce\CatalogueAdmin\Model\CatalogueProduct */
+        $owner = $this->getOwner();
+        $helper = SalePriceHelper::create($owner);
+        $sale = $helper->getReleventSalePrice();
+
+        if (empty($sale)) {
+            return $owner->getNicePrice();
+        }
+
+        return $sale->getNicePrice();
+    }
 }
