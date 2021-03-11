@@ -33,6 +33,7 @@ class SalePriceHelper
      */
     public function getReleventSalePrice()
     {
+        $product = $this->getProduct();
         $now = new \DateTime(
             DBDatetime::now()->format(DBDatetime::ISO_DATETIME)
         );
@@ -41,8 +42,9 @@ class SalePriceHelper
         return SalePrice::get()
             ->filter(
                 [
-                    'Starts:GreaterThanOrEqual' => $now_formatted,
-                    'Ends:LessThanOrEqual' => $now_formatted
+                    'Starts:LessThanOrEqual' => $now_formatted,
+                    'Ends:GreaterThanOrEqual' => $now_formatted,
+                    'Parent.ID' => $product->ID
                 ]
             )->sort('Starts', 'DESC')
             ->first();
