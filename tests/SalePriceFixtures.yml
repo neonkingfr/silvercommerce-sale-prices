@@ -9,11 +9,14 @@ SilverCommerce\SalePrices\SalePrice:
     BasePrice: 5.99
     Starts: "2021-04-01 00:00:00"
     Ends: "2021-04-03 23:59:59"
+    Parent: =>SilverCommerce\CatalogueAdmin\Model\CatalogueProduct.product_one
   price_two:
     BasePrice: 4.99
     Starts: "2021-06-01 00:00:00"
     Ends: "2021-06-07 23:59:59"
+    Parent: =>SilverCommerce\CatalogueAdmin\Model\CatalogueProduct.product_one
   price_three:
     BasePrice: 3.99
     Starts: "2021-09-01 00:00:00"
     Ends: "2021-09-25 23:59:59"
+    Parent: =>SilverCommerce\CatalogueAdmin\Model\CatalogueProduct.product_one
