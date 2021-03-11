@@ -4,3 +4,7 @@ Name: salepriceconfig
 SilverCommerce\CatalogueAdmin\Model\CatalogueProduct:
   extensions:
     - SilverCommerce\SalePrices\CatalogueProductExtension
+
+SilverCommerce\OrdersAdmin\Model\LineItem:
+  extensions:
+    - SilverCommerce\SalePrices\LineItemExtension
