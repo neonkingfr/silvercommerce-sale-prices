@@ -13,6 +13,8 @@ class SalePrice extends DataObject
 {
     use Taxable;
 
+    private static $table_name = "SalePrice";
+
     private static $db = [
         'BasePrice' => 'Decimal(9.3)',
         'Starts' => 'Datetime',
@@ -23,9 +25,15 @@ class SalePrice extends DataObject
         'Parent' => CatalogueProduct::class
     ];
 
+    private static $summary_fields = [
+        'BasePrice',
+        'Starts',
+        'Ends'
+    ];
+
     public function getBasePrice()
     {
-        return $this->BasePrice;
+        return $this->dbObject('BasePrice')->getValue();
     }
 
     public function getTaxRate()
